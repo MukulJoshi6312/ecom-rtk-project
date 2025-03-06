@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { add, remove } from '../redux/slices/cartSlice';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router';
 
 const Product = ({post}) => {
 
@@ -21,6 +22,7 @@ const Product = ({post}) => {
 
   return (
     <div className='flex flex-col items-center justify-between hover:scale-105 transition duration-300 ease-in gap-3 p-4 mt-10 ml-5 rounded-xl shadow-xl h-fit md:h-96'>
+    <Link to={`/product/${post.id}`}>
       <div>
         <p className='text-gray-700 font-semibold text-lg text-left truncate w-40 mt-1'>{post.title}</p>
       </div>
@@ -32,6 +34,8 @@ const Product = ({post}) => {
       <div className='h-[180px]'>
         <img src={post.image} alt={post.title} className='h-full w-full' />
       </div>
+      </Link>
+
 
       <div className='flex  flex-col md:flex-row justify-between gap-3 md:gap-12 md:items-center w-full mt-5'>
 

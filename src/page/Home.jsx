@@ -53,10 +53,8 @@ const Home = () => {
 
   return (
     <div className='max-w-6xl mx-auto space-y-10 space-x-5'>
-      {isLoading ? <Spinner /> : filteredPosts.length > 0 ? (
-        <div>
-          {/* Search Bar */}
-          <div className='my-4'>
+       {/* Search Bar */}
+       <div className='my-4'>
             <form onSubmit={handleSearch} className='flex ml-4 outline-1 justify-center rounded-md items-center'>
               <input 
                 type="text" 
@@ -71,7 +69,9 @@ const Home = () => {
               />
             </form>
           </div>
-
+      {isLoading ? <Spinner /> : filteredPosts.length > 0 ? (
+        <div>
+        
           {/* Product Grid */}
           <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 min-h-[80vh]'>
             {filteredPosts.slice(page * 5 - 5, page * 5).map((post) => (
