@@ -5,13 +5,13 @@ import Spinner from '../components/Spinner';
 import { FiSearch } from "react-icons/fi";
 import { useSelector,useDispatch } from 'react-redux';
 import { fetchProducts } from '../redux/slices/cartSlice';
+import SerachProduct from '../components/SerachProduct';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [page, setPage] = useState(1);
-  const [searchInput, setSearchInput] = useState("");
 
   // const { products, status, error } = useSelector((state) => state.cart);
   
@@ -37,13 +37,7 @@ const Home = () => {
     getTheData();
   }, []);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    const filteredData = posts.filter((item) =>
-      item.title.toLowerCase().includes(searchInput.toLowerCase())
-    );
-    setFilteredPosts(filteredData);
-  };
+  
 
   const handlePageChange = (selectedPage) => {
     if (selectedPage >= 1 && selectedPage <= Math.ceil(filteredPosts.length / 5) && selectedPage !== page) {
@@ -55,19 +49,7 @@ const Home = () => {
     <div className='max-w-6xl mx-auto space-y-10 space-x-5'>
        {/* Search Bar */}
        <div className='my-4'>
-            <form onSubmit={handleSearch} className='flex ml-4 outline-1 justify-center rounded-md items-center'>
-              <input 
-                type="text" 
-                placeholder='Search...'
-                value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
-                className='py-3 px-4 w-full outline-none'
-              />
-              <FiSearch 
-                className='text-3xl mr-3 cursor-pointer'
-                onClick={handleSearch}
-              />
-            </form>
+        <SerachProduct setFilteredPosts={setFilteredPosts} posts={posts}/>
           </div>
       {isLoading ? <Spinner /> : filteredPosts.length > 0 ? (
         <div>
@@ -85,7 +67,6 @@ const Home = () => {
         </div>
       )}
 
-      {/* Pagination */}
       {filteredPosts.length > 0 && (
         <div className='flex justify-center items-center w-full mb-16 mt-8'>
           <div className='cursor-pointer'>

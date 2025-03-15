@@ -89,7 +89,7 @@ const Cart = () => {
     <div className="flex flex-col justify-center items-center h-[500px]">
       <h1 className="text-2xl font-bold">Cart Empty</h1>
       <Link to="/">
-        <button className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+        <button className="mt-4 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">
           Shop Now
         </button>
       </Link>

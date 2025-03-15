@@ -7,11 +7,11 @@ import { useSelector } from 'react-redux';
 const Navbar = () => {
   const cart = useSelector((state)=>state.cart.products)
   return (
-    <div className='bg-gray-900'>
+    <div className='bg-green-500'>
       <div className='flex justify-between items-center h-20 max-w-6xl mx-auto'>
         <NavLink to={"/"}>
         <div className='ml-5'>
-        <img src="https://dcassetcdn.com/design_img/9458/20553/20553_281936_9458_image.jpg" className='bg-transparent w-14' alt="logo" />
+          <span className='text-white text-2xl font-semibold font-stretch-110% font-sens'>E-MART</span>
         </div>
         </NavLink>
 
